@@ -56,6 +56,9 @@ filebeat.prospectors:
   # Note: After is the equivalent to previous and before is the equivalent to to next in Logstash
   #multiline.match: after
 
+#========================= Filebeat global options ============================
+
+filebeat.shutdown_timeout: 30s
 
 #================================ General =====================================
 
