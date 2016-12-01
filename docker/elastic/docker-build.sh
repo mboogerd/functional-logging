@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker build . -t local/es:latest
+docker build . -t local/elastic-xpack:latest

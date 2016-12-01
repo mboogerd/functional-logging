@@ -2,7 +2,7 @@ version: '2'
 
 services:
   elastic:
-    image: local/es:latest
+    image: local/elastic-xpack:latest
     container_name: elastic
     ports:
       - "9200:9200"
@@ -13,7 +13,7 @@ services:
       - "./elastic/config:/usr/share/elasticsearch/config"
 
   kibana:
-    image: kibana:latest
+    image: local/kibana-xpack:latest
     container_name: kibana
     ports:
       - "5601:5601"

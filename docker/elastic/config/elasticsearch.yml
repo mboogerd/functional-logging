@@ -1,4 +1,6 @@
 network.host: 0.0.0.0
+# Disable security
+xpack.security.enabled: false
 
 network.publish_host: "${PUBLISH_IP}"
 

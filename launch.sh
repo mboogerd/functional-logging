@@ -19,6 +19,9 @@ pushd docker
 pushd elastic
 ./docker-build.sh
 popd
+pushd kibana
+./docker-build.sh
+popd
 pushd filebeat
 ./docker-build.sh
 popd
