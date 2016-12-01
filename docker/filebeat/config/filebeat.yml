@@ -88,8 +88,10 @@ output.elasticsearch:
   #password: "changeme"
 
 #-------------------------- Elasticsearch custom ------------------------------
-  index: "filebeat-my-%{+yyyy.MM.dd}"
-
+  index: "filebeat2-%{+yyyy.MM.dd}"
+  pipelines:
+      - pipeline: extract-process-status-simple
+      - pipeline: extract-date
 #----------------------------- Logstash output --------------------------------
 #output.logstash:
   # The Logstash hosts
