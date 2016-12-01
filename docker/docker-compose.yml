@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+  elastic:
+    image: local/es:latest
+    container_name: elastic
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - "PUBLISH_IP=192.168.90.172"
+    volumes:
+      - "./elastic/config:/usr/share/elasticsearch/config"
+
+  kibana:
+    image: kibana:latest
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    environment:
+      - "ELASTICSEARCH_URL=http://192.168.90.172:9200"
+    depends_on:
+      - elastic
+
+  application:
+    image: log-test:latest
+    container_name: log-test
+    environment:
+      - "ELASTIC_HOST=192.168.90.172"
+      - "ELASTIC_PORT=9200"
+    volumes:
+      - "./filebeat/config/:/etc/filebeat"
+    depends_on:
+      - elastic
