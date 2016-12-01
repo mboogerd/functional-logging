@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+
+# === METHODS ===
+
 # Allows you to wait until a services' TCP port is up
 TIMEOUT=1
 wait() {
@@ -14,16 +17,34 @@ wait() {
     done
 }
 
+requestDockerBuild() {
+    read -p "Would you like to build $1: [n]" -n 1 -r
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        ./docker-build.sh
+    fi
+}
+
+pushd () {
+    command pushd "$@" > /dev/null
+}
+
+popd () {
+    command popd "$@" > /dev/null
+}
+
+# === Script execution ===
+
 # Build the base docker for functional logging
 pushd docker
 pushd elastic
-./docker-build.sh
+requestDockerBuild elastic-xpack
 popd
 pushd kibana
-./docker-build.sh
+requestDockerBuild kibana-xpack
 popd
 pushd filebeat
-./docker-build.sh
+requestDockerBuild "functional-logging base image"
 popd
 popd
 
