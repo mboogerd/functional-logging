@@ -1,6 +1,13 @@
 # Functional logging
 
-Small experimental project to showcase elasticsearch, with kibana, and a log-generator using filebeat to push log-entries to elastic
+Small experimental project to showcase elasticsearch, with kibana, and a log-generator using filebeat to push log-entries to elastic.
+
+# Use
+
+Execute ./launch.sh
+- Launches elastic-xpack
+- Launches kibana-xpack
+- Launches a log-generator with a filebeat base-image
 
 # Elastic
 
